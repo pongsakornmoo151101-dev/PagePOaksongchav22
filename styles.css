@@ -1,0 +1,202 @@
+/* Fansite v1 : ข้าวเหนียวมะม่วง — HTML + CSS เท่านั้น */
+:root {
+  --coconut: #fbfaf5;
+  --rice: #f1ecd9;
+  --mango: #f2a516;
+  --mango-deep: #d9780b;
+  --pandan: #2c6a46;
+  --pandan-dark: #1c4630;
+  --ink: #20301f;
+  --muted: #5a6a58;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Sarabun", "Noto Sans Thai", Tahoma, sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: var(--ink);
+  background: var(--coconut);
+}
+
+h1, h2, h3 {
+  font-family: "Prompt", "Sarabun", sans-serif;
+  line-height: 1.25;
+  margin: 0 0 .6rem;
+}
+
+a { color: var(--pandan); }
+a:hover { color: var(--mango-deep); }
+a:focus-visible, summary:focus-visible {
+  outline: 3px solid var(--mango);
+  outline-offset: 3px;
+}
+
+.wrap { max-width: 920px; margin: 0 auto; padding: 0 1.25rem; }
+
+/* ---------- เมนูบนสุด ---------- */
+nav { background: var(--pandan-dark); }
+nav ul {
+  list-style: none;
+  margin: 0 auto;
+  padding: .6rem 1.25rem;
+  max-width: 920px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .25rem 1.5rem;
+}
+nav a { color: #f3efd8; text-decoration: none; font-weight: 600; }
+nav a:hover { color: var(--mango); text-decoration: underline; }
+
+/* ---------- Hero ---------- */
+.hero {
+  background: var(--mango);
+  color: var(--pandan-dark);
+  padding: 3.5rem 0;
+  overflow: hidden;
+}
+.hero .wrap {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  align-items: center;
+  gap: 2rem;
+}
+.hero h1 { font-size: clamp(2.2rem, 6vw, 3.8rem); font-weight: 800; }
+.hero p { font-size: 1.2rem; max-width: 30ch; margin: 0 0 1.5rem; }
+
+.btn {
+  display: inline-block;
+  background: var(--pandan-dark);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  padding: .7rem 1.6rem;
+  border-radius: 999px;
+  transition: background .15s;
+}
+.btn:hover { background: var(--pandan); color: #fff; }
+
+/* มะม่วงวาดด้วย CSS ล้วน ๆ */
+.mango {
+  position: relative;
+  width: min(100%, 300px);
+  aspect-ratio: 1 / 1.05;
+  margin: 0 auto;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255,255,255,.55) 0 8%, transparent 9%),
+    radial-gradient(circle at 40% 35%, #ffd54a, #f5a000 55%, #d9780b);
+  border-radius: 58% 42% 55% 45% / 55% 52% 48% 45%;
+  transform: rotate(-12deg);
+  box-shadow: 0 18px 0 -6px rgba(28, 70, 48, .18);
+}
+.mango::before {            /* ก้านมะม่วง */
+  content: "";
+  position: absolute;
+  top: -22px; left: 48%;
+  width: 10px; height: 30px;
+  background: var(--pandan-dark);
+  border-radius: 4px;
+}
+.mango::after {             /* ใบมะม่วง */
+  content: "";
+  position: absolute;
+  top: -34px; left: calc(48% + 8px);
+  width: 90px; height: 42px;
+  background: var(--pandan);
+  border-radius: 0 100% 0 100%;
+  transform: rotate(-8deg);
+}
+
+/* ---------- เนื้อหา ---------- */
+section { padding: 3rem 0; }
+section.alt { background: var(--rice); }
+h2 { font-size: 1.8rem; color: var(--pandan-dark); }
+h2::after {
+  content: "";
+  display: block;
+  width: 56px; height: 5px;
+  background: var(--mango);
+  border-radius: 3px;
+  margin-top: .35rem;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+ul.ingredients { padding-left: 1.2rem; }
+ul.ingredients li::marker { color: var(--mango-deep); }
+
+/* เหตุผลที่ชอบ — ใช้เส้นด้านซ้ายแทนการ์ดซ้ำ ๆ */
+.reason { border-left: 5px solid var(--pandan); padding-left: 1rem; margin-bottom: 1.4rem; }
+.reason:nth-child(2) { border-color: var(--mango); }
+.reason:nth-child(3) { border-color: var(--mango-deep); }
+.reason h3 { font-size: 1.15rem; }
+.reason p { margin: 0; color: var(--muted); }
+
+/* ตารางข้อมูล */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; background: #fff; }
+th, td { padding: .7rem 1rem; text-align: left; border-bottom: 1px solid #ddd6bb; }
+thead th { background: var(--pandan); color: #fff; }
+tbody tr:hover { background: #fff7de; }
+
+/* ตัวอย่างสี (color swatch) ด้วย CSS */
+.swatches { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1rem; }
+.swatch {
+  width: 88px; height: 88px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: .85rem;
+  font-weight: 600;
+  text-align: center;
+}
+.s-mango  { background: var(--mango); color: var(--pandan-dark); }
+.s-rice   { background: #fff; color: var(--ink); border: 2px solid #ddd6bb; }
+.s-coconut{ background: var(--rice); color: var(--ink); }
+.s-pandan { background: var(--pandan); color: #fff; }
+
+/* details/summary: เปิด-ปิดได้ด้วย HTML ล้วน */
+details {
+  background: #fff;
+  border: 1px solid #ddd6bb;
+  border-radius: 8px;
+  padding: .8rem 1.1rem;
+  margin-bottom: .75rem;
+}
+summary { cursor: pointer; font-weight: 600; font-family: "Prompt", sans-serif; }
+details[open] summary { color: var(--mango-deep); margin-bottom: .4rem; }
+details p { margin: 0; }
+
+blockquote {
+  margin: 0;
+  padding: 1.5rem 1.75rem;
+  background: var(--pandan-dark);
+  color: #f6f1d6;
+  border-radius: 10px;
+  font-size: 1.25rem;
+}
+
+footer {
+  background: var(--pandan-dark);
+  color: #cfe0d3;
+  text-align: center;
+  padding: 1.75rem 1rem;
+}
+footer a { color: var(--mango); }
+
+/* ---------- มือถือ ---------- */
+@media (max-width: 680px) {
+  .hero .wrap, .two-col { grid-template-columns: 1fr; }
+  .mango { width: 200px; order: -1; margin-top: 1.5rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn { transition: none; }
+}
